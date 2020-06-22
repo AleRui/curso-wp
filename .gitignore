@@ -1,2 +1,4 @@
 curso_wp_mariadb/
 logs/
+vendor/
+node_modules/
