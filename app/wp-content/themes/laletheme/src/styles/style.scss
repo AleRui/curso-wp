@@ -1,0 +1,39 @@
+/*
+ * Theme Name: LaleTheme
+ * @author: Ale Ruiz
+ */
+
+// Custom Bootstrap
+@import "./cutom-bootstrap";
+
+// Required
+//@import "~bootstrap/scss/functions";
+//@import "~bootstrap/scss/variables";
+//@import "~bootstrap/scss/mixins";
+
+// Optional
+//@import "~bootstrap/scss/reboot";
+//@import "~bootstrap/scss/type";
+//@import "~bootstrap/scss/images";
+//@import "~bootstrap/scss/code";
+//@import "~bootstrap/scss/grid";
+
+// all Bootstrap
+@import "~bootstrap/scss/bootstrap";
+//
+//$fa-font-path: "../fonts";
+//@import "~font-awesome/scss/font-awesome.scss";
+// ---
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+
+$micolor: red;
+
+//h1 {
+//    color: $micolor;
+//    font-family: 'Roboto';
+//}

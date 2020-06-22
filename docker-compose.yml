@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  loc-curso-wp-mariadb:
+    image: mariadb:10.1
+    container_name: loc-curso-wp-mariadb
+    command: "mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci  --innodb-flush-method=fsync"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=curso-wp
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./config/:/docker-entrypoint-initdb.d
+      - ./curso_wp_mariadb:/var/lib/mysql
+
+  loc-curso-wp-php-apache:
+    build: ./
+    container_name: loc-curso-wp-php-apache
+    volumes:
+      - ./config/my-httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/php.conf.ini
+      - ./config/xdebug.ini:/usr/local/etc/php/xdebug.ini
+      - ./app:/var/www/html
+      - ./logs:/var/log/apache2
+    ports:
+      - 8082:80
+      - 8443:443
+    depends_on:
+     - loc-curso-wp-mariadb
+    links:
+     - loc-curso-wp-mariadb
+
+volumes:
+  curso_wp_mariadb:
